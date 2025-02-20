@@ -38,3 +38,10 @@ console.log(numbers);
 let numbers3 = numbers.filter(num => num >6 );
 console.log(numbers3);
 console.log(numbers);
+
+//Вивести таблицю множення (console.log) для числа 7 (цикл for)
+for (let i=1; i<=10; i++) {
+    console.log(`7 x ${i} = ${7 * i}`);
+}
+
+    
