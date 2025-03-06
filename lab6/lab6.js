@@ -28,9 +28,10 @@ const numbers = [12, 5, 8, 21, 3, 18];
 */
 const numbers = [12, 5, 8, 21, 3, 18];
 function findMinMax(arr) {
+    //2 лекц 13 ст
     let min = Math.min(...arr);
     let max = Math.max(...arr);
-    return { min, max };
+    return {min, max};
 }
 
 let result = findMinMax(numbers);
