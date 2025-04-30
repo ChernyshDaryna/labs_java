@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Зміна зображення</title>
+</head>
+<body>
+  <img id="image" src="https://brevardzoo.org/wp-content/smush-webp/2019/03/Ferdinand.jpg.webp" alt="Старе зображення" width="150">
+  <br>
+  <button onclick="змінитиЗображення()">Змінити зображення</button>
+
+  <script>
+    function змінитиЗображення() {
+      const img = document.getElementById("image");
+      img.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1d-gaAeo6gWBGoqs8cikVUGLUY39ryzoV9ANkg1LBMzI2pm2mDjgeCZXZGmwId-Koqc8&usqp=CAU");
+      img.setAttribute("alt", "Нове зображення");
+    }
+  </script>
+</body>
+</html>

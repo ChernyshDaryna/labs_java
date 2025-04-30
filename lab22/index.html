@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Світлофор</title>
+  <style>
+    .light {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 10px auto;
+      background-color: grey;
+    }
+  </style>
+</head>
+<body>
+  <div id="red" class="light"></div>
+  <div id="yellow" class="light"></div>
+  <div id="green" class="light"></div>
+  <button onclick="nextLight()">Наступний</button>
+
+  <script>
+    const colors = ['red', 'yellow', 'green'];
+    let index = 0;
+
+    function nextLight() {
+      document.querySelectorAll('.light').forEach(el => el.style.backgroundColor = 'grey');
+      document.getElementById(colors[index]).style.backgroundColor = colors[index];
+      index = (index + 1) % colors.length;
+    }
+  </script>
+</body>
+</html>
