@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Таймер</title>
+</head>
+<body>
+
+  <button id="startButton">Запустити таймер</button>
+  <p>Минуло: <span id="timer">0</span> сек.</p>
+
+  <script>
+    let count = 0;
+    let timerId = null;
+
+    document.getElementById("startButton").addEventListener("click", () => {
+      if (timerId !== null) return; 
+
+      timerId = setInterval(() => {
+        count++;
+        document.getElementById("timer").textContent = count;
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Видалення елемента за ID</title>
+</head>
+<body>
+
+  <div id="messageBox">
+    <p>Це повідомлення буде видалено.</p>
+  </div>
+
+  <button onclick="deleteElement()">Видалити повідомлення</button>
+
+  <script>
+    function deleteElement() {
+      const element = document.getElementById("messageBox");
+      if (element) {
+        element.remove(); 
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Лічильник кліків</title>
+</head>
+<body>
+
+  <button id="clickButton">Натисни мене</button>
+  <p>Кількість кліків: <span id="clickCount">0</span></p>
+
+  <script>
+    let count = 0;
+
+    const button = document.getElementById("clickButton");
+    const display = document.getElementById("clickCount");
+
+    button.addEventListener("click", () => {
+      count++;
+      display.textContent = count;
+    });
+  </script>
+
+</body>
+</html>
