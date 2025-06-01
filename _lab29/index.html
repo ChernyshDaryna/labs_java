@@ -2,23 +2,79 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Лічильник кліків</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do список з localStorage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      margin-left: 10px;
+    }
+  </style>
 </head>
 <body>
 
-  <button id="clickButton">Натисни мене</button>
-  <p>Кількість кліків: <span id="clickCount">0</span></p>
+  <h2>Мій список справ</h2>
+
+  <input type="text" id="todoInput" placeholder="Нове завдання">
+  <button onclick="addTodo()">Додати</button>
+
+  <ul id="todoList"></ul>
 
   <script>
-    let count = 0;
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-    const button = document.getElementById("clickButton");
-    const display = document.getElementById("clickCount");
+    const todoInput = document.getElementById("todoInput");
+    const todoList = document.getElementById("todoList");
 
-    button.addEventListener("click", () => {
-      count++;
-      display.textContent = count;
-    });
+    function renderTodos() {
+      todoList.innerHTML = "";
+      todos.forEach((todo, index) => {
+        const li = document.createElement("li");
+        li.textContent = todo;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "✖";
+        deleteBtn.onclick = () => deleteTodo(index);
+
+        li.appendChild(deleteBtn);
+        todoList.appendChild(li);
+      });
+    }
+
+    function addTodo() {
+      const text = todoInput.value.trim();
+      if (text) {
+        todos.push(text);
+        updateStorage();
+        renderTodos();
+        todoInput.value = "";
+      }
+    }
+
+    function deleteTodo(index) {
+      todos.splice(index, 1);
+      updateStorage();
+      renderTodos();
+    }
+
+    function updateStorage() {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
+    renderTodos();
   </script>
 
 </body>

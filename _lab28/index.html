@@ -2,23 +2,39 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Лічильник кліків</title>
+  <title>Кошик товарів</title>
 </head>
 <body>
 
-  <button id="clickButton">Натисни мене</button>
-  <p>Кількість кліків: <span id="clickCount">0</span></p>
+  <h2>Додати товар у кошик</h2>
+  <button onclick="addToCart('Ноутбук')">Додати ноутбук</button>
+  <button onclick="addToCart('Смартфон')">Додати смартфон</button>
+  <button onclick="addToCart('Навушники')">Додати навушники</button>
+
+  <h3>Товари в кошику:</h3>
+  <ul id="cartList"></ul>
 
   <script>
-    let count = 0;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    const button = document.getElementById("clickButton");
-    const display = document.getElementById("clickCount");
+    const cartList = document.getElementById("cartList");
 
-    button.addEventListener("click", () => {
-      count++;
-      display.textContent = count;
-    });
+    function addToCart(product) {
+      cart.push(product); 
+      localStorage.setItem("cart", JSON.stringify(cart)); 
+      renderCart(); 
+    }
+
+    function renderCart() {
+      cartList.innerHTML = ""; 
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        cartList.appendChild(li);
+      });
+    }
+
+    renderCart();
   </script>
 
 </body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Імітація читання файлу (async/await)</title>
+</head>
+<body>
+
+  <h2>Обробка "файлу" (імітація)</h2>
+  <button onclick="readFile()">Прочитати файл</button>
+  <pre id="output"></pre>
+
+  <script>
+    function fakeFileRead() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const fakeContent = "Ім'я, Вік\nДарина, 18\nЮля, 19";
+          resolve(fakeContent);
+        }, 1500);
+      });
+    }
+
+    async function readFile() {
+      const output = document.getElementById("output");
+      output.textContent = "Читання файлу...";
+
+      try {
+        const content = await fakeFileRead(); 
+        const lines = content.split("\n").map(line => `• ${line}`);
+        output.textContent = "Вміст файлу:\n" + lines.join("\n");
+      } catch (error) {
+        output.textContent = "Помилка читання файлу!";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Дата через 100 днів</title>
+</head>
+<body>
+
+  <h2>Дата через 100 днів від сьогодні:</h2>
+  <p id="futureDate"></p>
+
+  <script>
+    function getDateAfter100Days() {
+      const today = new Date();
+      const futureDate = new Date();
+      futureDate.setDate(today.getDate() + 100); 
+      return futureDate.toLocaleDateString("uk-UA", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    }
+
+    document.getElementById("futureDate").textContent = getDateAfter100Days();
+  </script>
+
+</body>
+</html>
